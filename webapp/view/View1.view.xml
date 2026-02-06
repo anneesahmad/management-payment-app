@@ -1,0 +1,133 @@
+<mvc:View controllerName="zmm.requisitionupload.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    >
+    <Page id="page" title="{i18n>title}" >
+     <content>
+      
+     	 
+		<f:SimpleForm id="SimpleFormDisplay354wide"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Upload File"
+			labelSpanXL="1"
+			labelSpanL="1"
+			labelSpanM="1"
+			labelSpanS="1"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="1"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+            class="sapUiTinyMargin"
+            width="auto">
+			<f:content>
+             
+             <VBox id="_IDGenVBox" alignItems="Center" justifyContent="Center">
+                   <ToolbarSpacer id="_IDGenToolbarSpacer" ></ToolbarSpacer>
+            <u:FileUploader
+            placeholder="Upload File"
+            width="100%"
+			id="fileUploader"
+            fileType="XLSX,xlsx"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file"
+			uploadComplete="handleUploadComplete"/>
+            
+        
+          
+  
+		<Button id="_IDGenButton"
+        width="auto"
+			text="Upload File"
+			press="handleUploadPress"/>
+             
+             </VBox>
+      
+       
+			</f:content>
+		</f:SimpleForm>
+    <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
+
+         <Table
+    id="table"
+    inset="false"
+    growing="true"
+    mode="MultiSelect"
+    items="{excelData>/}"
+    selectionChange=".onSelectionChange"
+    width="auto"
+    class="sapUiTinyMargin"
+>
+    <columns>
+     <Column id="_IDGenColumnItemNr"><Text id="_IDGenTextItemNr" text="Item Nr (Posted)"/></Column>
+        <Column id="_IDGenColumnStatus"><Text id="_IDGenTextStatus" text="Status"/></Column>
+        <Column id="_IDGenColumn1"><Text id="_IDGenText" text="Acct. Assign. Cat."/></Column>
+        <Column id="_IDGenColumn2"><Text id="_IDGenText1" text="Material Code"/></Column>
+        <Column id="_IDGenColumn3"><Text id="_IDGenText2" text="Quantity"/></Column>
+        <Column id="_IDGenColumn4"><Text id="_IDGenText3" text="Valuation Price"/></Column>
+        <Column id="_IDGenColumn5"><Text id="_IDGenText4" text="Storage Loc."/></Column>
+        <Column id="_IDGenColumn6"><Text id="_IDGenText5" text="Deliv. Date"/></Column>
+        <Column id="_IDGenColumn7"><Text id="_IDGenText6" text="Purch. Org"/></Column>
+        <Column id="_IDGenColumn8"><Text id="_IDGenText15" text="WBS Element"/></Column>
+        <Column id="_IDGenColumn9"><Text id="_IDGenText16" text="Item Details"/></Column>
+        <Column id="_IDGenColumn10"><Text id="_IDGenText17" text="Start Date"/></Column>
+        <Column id="_IDGenColumn11"><Text id="_IDGenText18" text="End Date"/></Column>
+        <Column id="_IDGenColumn13"><Text id="_IDGenText99" text="Item Type"/></Column>
+        <Column id="_IDGenColumn14"><Text id="_IDGenText101" text="Plant"/></Column>
+        <Column id="_IDGenColumn15"><Text id="_IDGenText102" text="Currency"/></Column>
+        <Column id="_IDGenColumn16"><Text id="_IDGenText103" text="Tax Code"/></Column>
+    </columns>
+
+    <items>
+        <ColumnListItem
+            id="_IDGenColumnListItem"
+            vAlign="Middle"
+        >
+            <cells>
+              <Text id="_IDGenTextItemNrValue" text="{excelData>ItemNr}"/>
+                <ObjectStatus 
+                    id="_IDGenObjectStatus" 
+                    text="{= ${excelData>Posted} ? (${excelData>PostingError} ? 'Error' : 'Posted') : 'Not Posted' }"
+                    state="{= ${excelData>Posted} ? (${excelData>PostingError} ? 'Error' : 'Success') : 'None' }"
+                />
+                <Text id="_IDGenText8" text="{excelData>AccountAssignmentCategory}"/>
+                <Text id="_IDGenText9" text="{excelData>MaterialCode}"/>
+                <Text id="_IDGenText10" text="{excelData>Quantity}"/>
+                <Text id="_IDGenText11" text="{excelData>ValuationPrice}"/>
+                <Text id="_IDGenText12" text="{excelData>StorageLocation}"/>
+                <Text id="_IDGenText13" text="{excelData>DeliveryDate}"/>
+                <Text id="_IDGenText14" text="{excelData>PurchaseOrganization}"/>
+                <Text id="_IDGenText19" text="{excelData>WBSElement}"/>
+                <Text id="_IDGenText20" text="{excelData>ItemDetails}"/>
+                <Text id="_IDGenText21" text="{excelData>StartDate}"/>
+                <Text id="_IDGenText22" text="{excelData>EndDate}"/>
+                 <Text id="_IDGenText23" text="{excelData>ItemType}"/>
+                 <Text id="_IDGenText24" text="{excelData>Plant}"/>
+                 <Text id="_IDGenText25" text="{excelData>Curr}"/>
+                 <Text id="_IDGenText26" text="{excelData>TaxCode}"/>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>     
+     </content>
+     <footer >
+       
+       <OverflowToolbar id="_IDGenOverflowToolbar" width="auto" visible="false" class="sapUiTinyMargin">
+       <ToolbarSpacer id="_IDGenToolbarSpacer2" ></ToolbarSpacer>
+       <Button id="_IDGenButton1" text="Post Data" press=".onUploadPress" type="Emphasized"></Button>
+       </OverflowToolbar>
+     
+     </footer>
+
+    </Page>
+</mvc:View>
